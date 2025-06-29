@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeTribe - Your Plus-One, Your Rules ✨</title>
+    
+    <!-- 
+    BRANDING & LOGO IDEA:
+    - Brand Name: "VibeTribe" 
+    - Logo: A minimalist icon with overlapping circles in gradient pastels representing connection
+    - Typography: Bold, rounded sans-serif (like Poppins/Inter)
+    - Tagline: "Rent a Vibe, Not a Date" / "Your Plus-One, Your Rules"
+    - Color palette: Soft pastels with vibrant accents (#FF6B9D, #C44CEA, #00D4FF, #FFE066)
+    -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Variables */
+        :root {
+            --primary-pink: #FF6B9D;
+            --primary-purple: #C44CEA;
+            --primary-blue: #00D4FF;
+            --primary-yellow: #FFE066;
+            --neutral-white: #FFFFFF;
+            --neutral-light: #F8F9FF;
+            --neutral-gray: #6B7280;
+            --neutral-dark: #1F2937;
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            --radius: 20px;
+            --radius-sm: 12px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--neutral-gray);
+            margin-bottom: 1rem;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neutral-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: var(--neutral-white);
+            color: var(--primary-purple);
+            border: 2px solid var(--primary-purple);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-purple);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="4"/></g></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--neutral-light);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: var(--neutral-dark);
+        }
+
+        /* Companion Profiles */
+        .profiles {
+            background: white;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .profile-card {
+            background: var(--neutral-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .profile-image {
+            height: 250px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .profile-info {
+            padding: 1.5rem;
+        }
+
+        .profile-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            background: var(--primary-pink);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .tag:nth-child(2n) { background: var(--primary-purple); }
+        .tag:nth-child(3n) { background: var(--primary-blue); }
+        .tag:nth-child(4n) { background: var(--primary-yellow); color: var(--neutral-dark); }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--neutral-light);
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--primary-purple);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            color: var(--neutral-gray);
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--neutral-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-pink);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            background: var(--primary-purple);
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">VibeTribe ✨</div>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#companions">Companions</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Rent a Vibe, Not a Date 💫</h1>
+            <p>Your plus-one for every occasion. Find your perfect companion for events, hangouts, or just someone awesome to vibe with. 100% platonic, 100% fun! 🎉</p>
+            <div class="hero-buttons">
+                <a href="#companions" class="btn btn-primary">Find Your Tribe 🔥</a>
+                <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="text-center">
+                <h2>How VibeTribe Works</h2>
+                <p>Getting your perfect companion is easier than ordering food! 🍕</p>
+            </div>
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-icon">🔍</div>
+                    <h3>Find Your Vibe</h3>
+                    <p>Browse through our amazing companions and find someone who matches your energy and interests.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-icon">💬</div>
+                    <h3>Chat & Connect</h3>
+                    <p>Message your chosen companion, discuss your plans, and set expectations for your hangout.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-icon">🎯</div>
+                    <h3>Book & Chill</h3>
+                    <p>Confirm your booking, meet up, and enjoy quality time with your new companion!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companion Profiles -->
+    <section id="companions" class="profiles">
+        <div class="container">
+            <div class="text-center">
+                <h2>Meet Your Potential Tribe</h2>
+                <p>Every companion is verified, background-checked, and ready to be your perfect plus-one! ✨</p>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-card fade-in">
+                    <div class="profile-image">🎮</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Alex - The Gamer</div>
+                        <p>Perfect companion for gaming sessions, tech events, or chilling at home with some good vibes.</p>
+                        <div class="profile-tags">
+                            <span class="tag">Gamer</span>
+                            <span class="tag">Tech Lover</span>
+                            <span class="tag">Chiller</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card fade-in">
+                    <div class="profile-image">🎭</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Priya - The Social Butterfly</div>
+                        <p>Your go-to companion for parties, social gatherings, and making any event more fun!</p>
+                        <div class="profile-tags">
+                            <span class="tag">Event Buddy</span>
+                            <span class="tag">Social</span>
+                            <span class="tag">Party Starter</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card fade-in">
+                    <div class="profile-image">☕</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Rohit - The Cafe Hopper</div>
+                        <p>Love exploring new cafes and having deep conversations? Rohit's your perfect companion!</p>
+                        <div class="profile-tags">
+                            <span class="tag">Cafe Hopper</span>
+                            <span class="tag">Foodie</span>
+                            <span class="tag">Deep Talks</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card fade-in">
+                    <div class="profile-image">🎵</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Maya - The Music Lover</div>
+                        <p>Concert buddy or just someone to jam with? Maya knows all the best beats and venues!</p>
+                        <div class="profile-tags">
+                            <span class="tag">Music Lover</span>
+                            <span class="tag">Concert Buddy</span>
+                            <span class="tag">Creative</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card fade-in">
+                    <div class="profile-image">🏃‍♂️</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Karan - The Fitness Freak</div>
+                        <p>Need a workout buddy or someone for outdoor adventures? Karan's got the energy!</p>
+                        <div class="profile-tags">
+                            <span class="tag">Fitness</span>
+                            <span class="tag">Outdoor</span>
+                            <span class="tag">Energetic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card fade-in">
+                    <div class="profile-image">📚</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Ananya - The Intellectual</div>
+                        <p>Love book clubs, museums, or intellectual discussions? Ananya's your perfect match!</p>
+                        <div class="profile-tags">
+                            <span class="tag">Bookworm</span>
+                            <span class="tag">Intellectual</span>
+                            <span class="tag">Museum Buddy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="text-center">
+                <h2>Frequently Asked Questions</h2>
+                <p>Got questions? We've got answers! 🤔</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Is this a dating app?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely not! VibeTribe is 100% platonic. We're all about friendship, companionship, and having a good time without any romantic expectations. Think of us as "Uber for friendship"! 🤝
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Is it safe and legal?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        100% yes! All our companions are background-verified, and every interaction is purely platonic. We follow all Indian laws and regulations. Safety is our top priority! 🛡️
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What can I do with a companion?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Tons of fun stuff! Go to events, explore cafes, attend concerts, gaming sessions, museum visits, workout together, or just chill and talk. Anything platonic and fun! 🎉
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How much does it cost?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Prices vary based on the activity and duration. Most companions charge ₹500-2000 per outing. No hidden fees, and you can discuss rates directly with your chosen companion! 💰
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can I become a companion?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! If you're social, reliable, and love meeting new people, apply to join our tribe. We have a thorough verification process to ensure everyone's safety and quality. 🌟
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VibeTribe</h3>
+                <p>Rent a vibe, not a date. Your perfect plus-one for every occasion! 💫</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📹</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#companions">Find Companions</a>
+                <a href="#faq">FAQ</a>
+                <a href="#">Become a Companion</a>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Safety Guidelines</a>
+                <a href="#">Community Guidelines</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:hello@vibetribe.in">hello@vibetribe.in</a>
+                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="#">Mumbai, India</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><strong>Legal Disclaimer:</strong> VibeTribe is a platform for platonic companionship services only. All interactions are strictly non-romantic and non-intimate. We comply with all applicable Indian laws and regulations. Users must be 18+ years old.</p>
+            <p>&copy; 2024 VibeTribe. All rights reserved. Made with 💜 for Gen Z India.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question span').forEach(item => {
+                    item.textContent = '+';
+                });
+                
+                answer.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Profile card interactions
+        document.querySelectorAll('.profile-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Dynamic button loading state
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) return;
+                
+                e.preventDefault();
+                const originalText = this.textContent;
+                this.innerHTML = '<span class="loading"></span> Loading...';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 2000);
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.transform = currentScroll > lastScroll ? 'translateY(-100%)' : 'translateY(0)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Easter egg - Konami code
+        let konamiCode = '';
+        const konamiSequence = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightKeyBKeyA';
+        
+        document.addEventListener('keydown', (e) => {
+            konamiCode += e.code;
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode = konamiCode.slice(-konamiSequence.length);
+            }
+            
+            if (konamiCode === konamiSequence) {
+                document.body.style.filter = 'hue-rotate(180deg)';
+                setTimeout(() => {
+                    document.body.style.filter = '';
+                }, 3000);
+                konamiCode = '';
+            }
+        });
+    </script>
+</body>
+</html>
