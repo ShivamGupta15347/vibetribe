@@ -44,10 +44,13 @@ app.use('/api/bookings', bookingRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
+    console.log('Health check requested at:', new Date().toISOString());
     res.json({ 
         status: 'OK', 
         message: 'VibeTribe API is running! 🚀',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV,
+        mongodb: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'
     });
 });
 
@@ -74,4 +77,5 @@ app.listen(PORT, () => {
     console.log(`🚀 VibeTribe server running on port ${PORT}`);
     console.log(`📱 API available at http://localhost:${PORT}/api`);
     console.log(`💚 Environment: ${process.env.NODE_ENV}`);
+    console.log(`🔗 MongoDB URI: ${process.env.MONGODB_URI ? 'Set' : 'Not set'}`);
 }); 
