@@ -14,9 +14,21 @@
 
 ### Step 2: Push to GitHub
 ```bash
+# Remove node_modules from Git tracking
+git rm -r --cached client/node_modules
+git rm -r --cached server/node_modules
+
+# Add all files again (excluding node_modules)
 git add .
-git commit -m "Prepare for deployment"
+
+# Commit the changes
+git commit -m "Fix repository structure and remove node_modules"
+
+# Push to GitHub
 git push origin main
+
+# Force push to overwrite the repository
+git push -f origin main
 ```
 
 ### Step 3: Deploy to Render
@@ -79,3 +91,12 @@ curl https://vibetribe-backend.onrender.com/api/health
 - `server/config.prod.env`: Production environment variables
 - `client/.env.production`: Frontend environment variables
 - `deploy.sh`: Deployment helper script
+
+# Make sure .gitignore excludes node_modules
+echo "node_modules/" >> .gitignore
+echo "client/node_modules/" >> .gitignore
+echo "server/node_modules/" >> .gitignore
+echo ".env" >> .gitignore
+echo ".env.local" >> .gitignore
+echo "build/" >> .gitignore
+echo "dist/" >> .gitignore
