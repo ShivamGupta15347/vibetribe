@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  body {
+    @apply font-sans text-neutral-dark bg-neutral-light;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-pink to-primary-purple text-white shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-primary-purple border-2 border-primary-purple hover:bg-primary-purple hover:text-white;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-purple focus:border-transparent transition-all duration-200;
+  }
+  
+  .tag {
+    @apply px-3 py-1 rounded-full text-sm font-medium text-white;
+  }
+  
+  .tag-pink { @apply bg-primary-pink; }
+  .tag-purple { @apply bg-primary-purple; }
+  .tag-blue { @apply bg-primary-blue; }
+  .tag-yellow { @apply bg-primary-yellow text-neutral-dark; }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-pink to-primary-purple bg-clip-text text-transparent;
+  }
+  
+  .bg-gradient {
+    @apply bg-gradient-to-br from-primary-pink via-primary-purple to-primary-blue;
+  }
+  
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+  }
+}
