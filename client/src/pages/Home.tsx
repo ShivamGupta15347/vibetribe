@@ -176,6 +176,107 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 bg-neutral-light">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-dark mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-neutral-gray">
+              Got questions? We've got answers! 🤔
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="card overflow-hidden"
+            >
+              <details className="group">
+                <summary className="flex justify-between items-center p-6 cursor-pointer bg-primary-purple text-white font-semibold hover:bg-primary-pink transition-colors">
+                  <span>Is this a dating app?</span>
+                  <span className="text-xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="p-6 text-neutral-gray">
+                  Absolutely not! VibeTribe is 100% platonic. We're all about friendship, companionship, and having a good time without any romantic expectations. Think of us as "Uber for friendship"! 🤝
+                </div>
+              </details>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="card overflow-hidden"
+            >
+              <details className="group">
+                <summary className="flex justify-between items-center p-6 cursor-pointer bg-primary-purple text-white font-semibold hover:bg-primary-pink transition-colors">
+                  <span>Is it safe and legal?</span>
+                  <span className="text-xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="p-6 text-neutral-gray">
+                  100% yes! All our companions are background-verified, and every interaction is purely platonic. We follow all Indian laws and regulations. Safety is our top priority! 🛡️
+                </div>
+              </details>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="card overflow-hidden"
+            >
+              <details className="group">
+                <summary className="flex justify-between items-center p-6 cursor-pointer bg-primary-purple text-white font-semibold hover:bg-primary-pink transition-colors">
+                  <span>What can I do with a companion?</span>
+                  <span className="text-xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="p-6 text-neutral-gray">
+                  Tons of fun stuff! Go to events, explore cafes, attend concerts, gaming sessions, museum visits, workout together, or just chill and talk. Anything platonic and fun! 🎉
+                </div>
+              </details>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="card overflow-hidden"
+            >
+              <details className="group">
+                <summary className="flex justify-between items-center p-6 cursor-pointer bg-primary-purple text-white font-semibold hover:bg-primary-pink transition-colors">
+                  <span>How much does it cost?</span>
+                  <span className="text-xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="p-6 text-neutral-gray">
+                  Prices vary based on the activity and duration. Most companions charge ₹500-2000 per outing. No hidden fees, and you can discuss rates directly with your chosen companion! 💰
+                </div>
+              </details>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="card overflow-hidden"
+            >
+              <details className="group">
+                <summary className="flex justify-between items-center p-6 cursor-pointer bg-primary-purple text-white font-semibold hover:bg-primary-pink transition-colors">
+                  <span>Can I become a companion?</span>
+                  <span className="text-xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="p-6 text-neutral-gray">
+                  Yes! If you're social, reliable, and love meeting new people, apply to join our tribe. We have a thorough verification process to ensure everyone's safety and quality. 🌟
+                </div>
+              </details>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">

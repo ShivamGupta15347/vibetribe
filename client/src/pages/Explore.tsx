@@ -59,7 +59,11 @@ const Explore: React.FC = () => {
   }, [fetchCompanions]);
 
   const handleFilterChange = (newFilters: Partial<CompanionFilters>) => {
-    setFilters(prev => ({ ...prev, ...newFilters, page: 1 }));
+    if (newFilters.page) {
+      setFilters(prev => ({ ...prev, ...newFilters }));
+    } else {
+      setFilters(prev => ({ ...prev, ...newFilters, page: 1 }));
+    }
   };
 
   const handleTagToggle = (tag: string) => {
